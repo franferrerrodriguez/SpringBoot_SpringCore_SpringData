@@ -1,0 +1,7 @@
+spring\framework\beans\TraductorIngles.class
+spring\framework\pojo\InterpreteIngles.class
+spring\framework\interfaces\IInterprete.class
+spring\framework\app\App.class
+spring\framework\pojo\InterpreteEspanol.class
+spring\framework\app\Prueba.class
+spring\framework\beans\TraductorEspanol.class
