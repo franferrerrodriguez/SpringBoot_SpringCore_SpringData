@@ -1,15 +1,21 @@
 package spring.framework;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import spring.framework.interfaces.ITraductor;
-
+@Configuration
+@ComponentScan(basePackages = { "spring.framework" })
 public class App {
 
 	public static void main(String[] args) throws InterruptedException {
-		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "application-context.xml" });
-		ITraductor cust = (ITraductor) context.getBean("aaaa");
-		System.out.println(cust.getNombre());
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+		try {
+			ctx.register(App.class);
+			ctx.refresh();
+			System.out.println("Contains aaaa?: " + ctx.containsBean("aaaa"));
+		} finally {
+			ctx.close();
+		}
 	}
 }
